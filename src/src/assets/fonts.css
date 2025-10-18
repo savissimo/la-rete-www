@@ -1,0 +1,101 @@
+/* Neuton Font Family */
+
+/* Regular */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Light */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* Extra Light */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Extra Bold */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Extrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* Italic */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Extra Light Italic */
+@font-face {
+    font-family: 'Neuton';
+    src: url('./fonts/Neuton-ExtralightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+/* Neuton SC (Small Caps) */
+@font-face {
+    font-family: 'Neuton SC';
+    src: url('./fonts/Neuton-SC-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neuton SC';
+    src: url('./fonts/Neuton-SC-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neuton SC';
+    src: url('./fonts/Neuton-SC-Extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neuton SC';
+    src: url('./fonts/Neuton-SC-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neuton SC';
+    src: url('./fonts/Neuton-SC-Extrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+/* Neuton Cursive */
+@font-face {
+    font-family: 'Neuton Cursive';
+    src: url('./fonts/NeutonCursive-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}

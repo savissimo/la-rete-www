@@ -1,0 +1,65 @@
+:root {
+	--font-body: 'Neuton', serif;
+	--font-display: 'Neuton SC', serif;
+	--font-cursive: 'Neuton Cursive', serif;
+
+	--color-dark: hsl(13, 5%, 10%);
+	--color-grey-dark: hsl(13, 5%, 40%);
+	--color-grey: hsl(13, 5%, 60%);
+	--color-grey-light: hsl(13, 5%, 80%);
+	--color-grey-lighter: hsl(13, 5%, 90%);
+	--color-light: hsl(13, 5%, 98%);
+	--color-primary: hsl(13, 80%, 40%);
+}
+
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: var(--font-body);
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.4;
+	color: var(--color-dark);
+	background-color: var(--color-light);
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-display);
+	font-weight: 700;
+	line-height: 1.2;
+	margin: 1.5em 0 0.5em;
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.75rem;
+}
+
+h4 {
+	font-size: 1.5rem;
+}
+
+h5 {
+	font-size: 1.25rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+/* Other global styles */
+
+a {
+	color: inherit;
+	text-decoration: none;
+}

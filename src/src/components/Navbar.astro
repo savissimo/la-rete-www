@@ -1,0 +1,124 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<header>
+	<div class="logo">
+		<a href="/">La Rete</a>
+	</div>
+	<button 
+		type="button" class="btn btn-invisible" 
+		aria-expanded="false" aria-controls="main-menu" 
+		data-button="expander" data-expander-target="#main-menu"
+		>
+		<Icon name="navigation-menu" />
+	</button>
+	<nav class="nav-links" id="main-menu" aria-expanded="false">
+		<a href="/#about">Chi siamo</a>
+		<a href="/#services">Cosa facciamo</a>
+		<a href="/#contact">Contatti</a>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: relative;
+		display: grid;
+		grid-template: "logo expander" auto / auto 1fr;
+		align-items: center;
+	}
+
+	.logo {
+		grid-area: logo;
+		font-weight: 700;
+		font-size: 1.5rem;
+		font-variant: small-caps;
+		font-variant-caps: all-petite-caps;
+		padding: 0.5rem 1rem;
+		color: var(--color-primary);
+		background-color: var(--color-light);
+	}
+
+	[data-button="expander"] {
+		grid-area: expander;
+		justify-self: end;
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.5rem;
+		border: 0 solid var(--color-dark);
+		border-radius: 0.25rem;
+		background: none;
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background-color: var(--color-light);
+			outline: none;
+			border-color: var(--color-dark);
+		}
+
+		&:focus {
+			box-shadow: 0 0 0 3px var(--color-accent);
+		}
+	}
+
+	.nav-links {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: var(--color-grey-lighter);
+		box-shadow: 0 .125rem .5rem rgba(0,0,0,.1);
+
+		grid-area: nav;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+
+		&[aria-expanded="false"] {
+			display: none;
+		}
+
+		&[aria-expanded="true"] {
+			display: flex;
+		}
+
+		a {
+			padding: 0.5rem 1rem;
+			border: 0 solid var(--color-grey-light);
+			border-bottom-width: 1px;
+			transition: border-color 0.3s;
+
+			&:first-of-type {
+				border-top-width: 1px;
+			}
+
+			&:hover {
+				background: var(--color-grey-light);
+			}
+
+			&:active {
+				background: var(--color-grey);
+				color: var(--color-light);
+			}
+		}
+	}
+
+</style>
+
+<script>
+	const expander = document.querySelector('[data-button="expander"]');
+
+	expander?.addEventListener('click', () => {
+		const isExpanded = expander.getAttribute('aria-expanded') === 'true';
+		expander.setAttribute('aria-expanded', `${!isExpanded}`);
+		const expanderTarget = document.querySelector(expander.getAttribute('data-expander-target') ?? '');
+		if (expanderTarget) {
+			expanderTarget.setAttribute('aria-expanded', `${!isExpanded}`);
+		}
+	});
+</script>
