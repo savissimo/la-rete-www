@@ -8,13 +8,35 @@ import "../assets/fonts.css";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width; initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>La Rete - Vercelli</title>
 	</head>
 	<body>
 		<Navbar />
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
+
+<style>
+	body {
+		display: grid;
+		grid-template: "header" auto "main" 1fr / auto;
+		max-width: 48rem;
+		min-height: 100vh;
+		margin: 0 auto;
+	}
+
+	body > header {
+		grid-area: header;
+	}
+
+	body > main {
+		grid-area: main;
+		padding: 1rem;
+		margin: 0 auto;
+	}
+</style>
