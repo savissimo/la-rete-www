@@ -1,10 +1,11 @@
 ---
 import Icon from "./Icon.astro";
+import withBase from "../utils/withBase";
 ---
 
 <header>
 	<div class="logo">
-		<a href="/">La Rete</a>
+		<a href={withBase('/')}>La Rete</a>
 	</div>
 	<button 
 		type="button" class="btn btn-invisible" 
@@ -13,9 +14,9 @@ import Icon from "./Icon.astro";
 		>
 		<Icon name="navigation-menu" />
 	</button>
-	<nav class="nav-links" id="main-menu" aria-expanded="false">
-		<a href="/il-progetto">Il progetto</a>
-	</nav>
+		<nav class="nav-links" id="main-menu" aria-expanded="false">
+			<a href={withBase('/il-progetto')}>Il progetto</a>
+		</nav>
 </header>
 
 <style>
