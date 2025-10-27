@@ -72,15 +72,20 @@ import withBase from '../utils/withBase';
 
 	section.hero {
 		position: relative;
-		max-width: 100%;
+		max-width: 100vw;
 		display: grid;
 		grid-template: "title" auto "text" auto "cta" auto / auto;
 		gap: 1rem;
 		align-items: end;
 		padding: 2rem;
+		margin: 0 -1rem;
 		background-image: url('../assets/images/visita-anfiteatro.png');
 		background-size: cover;
-		animation: hero-bg 240s ease-in-out infinite;
+		animation: hero-bg 180s ease-in-out infinite;
+
+		@media (min-width: 600px) {
+			animation-duration: 120s;
+		}
 
 		&::before {
 			content: '';
