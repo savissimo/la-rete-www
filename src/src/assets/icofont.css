@@ -38,6 +38,31 @@ url("./fonts/icofont.woff") format("woff");
   content: "\efa2";
 }
 
+.icofont-code:before
+{
+  content: "\eeea";
+}
+
+.icofont-plugin:before
+{
+  content: "\efbf";
+}
+
+.icofont-facebook:before
+{
+  content: "\ed37";
+}
+
+.icofont-instagram:before
+{
+  content: "\ed46";
+}
+
+.icofont-ui-email:before
+{
+  content: "\ec56";
+}
+
 [class^="icofont-"].icofont-duotone,
 	[class*=" icofont-"].icofont-duotone
 {

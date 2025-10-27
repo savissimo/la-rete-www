@@ -2,6 +2,9 @@
 import "./Layout.scss";
 import Navbar from "../components/Navbar.astro";
 import "../assets/fonts.css";
+import Icon from "../components/Icon.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -18,13 +21,29 @@ import "../assets/fonts.css";
 		<main>
 			<slot />
 		</main>
+		<footer>
+			<header>
+				<div class="title">La Rete</div>
+				<div class="subtitle">Associazione culturale</div>
+			</header>
+			<div class="contacts">
+				<a href="https://www.facebook.com/laretevercelli"><Icon name="facebook" /></a>
+				<a href="https://www.instagram.com/larete.vercelli"><Icon name="instagram" /></a>
+				<a href="mailto:grandevercelli@gmail.com"><Icon name="ui-email" /></a>
+			</div>
+			<div class="credits">
+				<Icon name="code" /> <a href="https://www.linkedin.com/in/simonesaviolo/">Simone Saviolo</a>
+				<Icon name="plugin" /> <a href="https://astro.build/">Astro</a>
+			</div>
+			<div class="copyright">© La Rete 2013&mdash;{currentYear}</div>
+		</footer>
 	</body>
 </html>
 
 <style>
 	body {
 		display: grid;
-		grid-template: "header" auto "main" 1fr / auto;
+		grid-template: "header" auto "main" 1fr "footer" auto / auto;
 		max-width: 48rem;
 		min-height: 100vh;
 		margin: 0 auto;
@@ -38,5 +57,61 @@ import "../assets/fonts.css";
 		grid-area: main;
 		padding: 1rem;
 		margin: 0 auto;
+	}
+
+	body > footer {
+		grid-area: footer;
+		padding: 1rem;
+		font-size: 0.875rem;
+		color: var(--color-grey);
+		text-align: center;
+		border-top: 1px solid var(--color-grey-light);
+		margin-top: 2rem;
+		background-color: var(--color-lightest);
+		display: grid;
+		grid-template: 
+			"header contacts" auto
+			"credits credits" auto
+			"copyright copyright" auto
+			/ 1fr auto;
+
+		& > header {
+			grid-area: header;
+			justify-self: start;
+			text-align:start;
+			min-height: 6rem;
+
+			& > .title {
+				font-weight: bold;
+				font-size: 1.25rem;
+				font-variant-caps: petite-caps;
+			}
+
+			& > .subtitle {
+				font-size: 0.875rem;
+				font-style: italic;
+				color: var(--color-grey);
+			}
+		}
+
+		& > .contacts {
+			grid-area: contacts;
+			justify-self: end;
+			display: flex;
+			gap: 0.5rem;
+			font-size: 1.5rem;
+		}
+
+		& > .credits {
+			grid-area: credits;
+			font-family: var(--font-ss);
+			font-size: 0.7rem;
+		}
+		
+		& > .copyright {
+			grid-area: copyright;
+			font-family: var(--font-ss);
+			font-size: 0.7rem;
+		}
 	}
 </style>
