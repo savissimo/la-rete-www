@@ -63,6 +63,11 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ec56";
 }
 
+.icofont-download:before
+{
+  content: "\ef08";
+}
+
 [class^="icofont-"].icofont-duotone,
 	[class*=" icofont-"].icofont-duotone
 {
