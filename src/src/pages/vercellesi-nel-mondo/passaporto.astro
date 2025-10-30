@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import withBase from "../../utils/withBase";
+
+const breadcrumbs = [
+    { label: 'Vercellesi nel Mondo', href: withBase('/vercellesi-nel-mondo') },
+];
+const passaporto = (await getCollection('vercellesi-nel-mondo_passaporto'));
+---
+
+<Layout breadcrumbs={breadcrumbs}>
+    <h2>Passaporto</h2>
+	<p>In collaborazione con <a href="https://www.vercelliweb.tv">Vercelli Web.TV</a></p>
+    <div class="episodes-container">
+        {passaporto.map((e) => (
+            <section class="episode card">
+                <header>
+                    <h3>{e.data.name}</h3>
+                </header>
+                <div class="picture">
+					<img src={`/src/assets/images/vercellesi-nel-mondo/${e.data.image}`} alt={e.data.name} />
+				</div>
+				<div class="link">
+					<a href={e.data.link} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+						<Icon name="external-link" /> Guarda la puntata
+					</a>
+				</div>
+            </section>
+        ))}
+    </div>
+</Layout>
+
+<style>
+    .episodes-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .episode {
+        display: grid;
+        grid-template: "header" auto "description" auto "files" auto / auto;
+        gap: 1rem;
+
+        header {
+            grid-area: header;
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        .description {
+            grid-area: description;
+        }
+
+        .document-files-container {
+            grid-area: files;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+</style>

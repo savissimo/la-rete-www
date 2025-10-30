@@ -14,6 +14,16 @@ const vercellesiNelMondoDocuments = defineCollection({
     }),
 })
 
+const vercellesiNelMondoPassaporto = defineCollection({
+	loader: file('./content/vercellesi-nel-mondo.json', { parser: (t) => JSON.parse(t).passaporto }),
+	schema: z.object({
+		image: z.string(),
+		name: z.string(),
+		link: z.string(),
+	}),
+})
+
 export const collections = {
     'vercellesi-nel-mondo_documents': vercellesiNelMondoDocuments,
+    'vercellesi-nel-mondo_passaporto': vercellesiNelMondoPassaporto,
 }
