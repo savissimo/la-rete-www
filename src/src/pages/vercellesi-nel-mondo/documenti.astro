@@ -5,7 +5,7 @@ import Icon from "../../components/Icon.astro";
 import withBase from "../../utils/withBase";
 
 const breadcrumbs = [
-    { label: 'Vercellesi nel Mondo', href: '/vercellesi-nel-mondo' },
+    { label: 'Vercellesi nel Mondo', href: withBase('/vercellesi-nel-mondo') },
 ];
 const documents = (await getCollection('vercellesi-nel-mondo_documents'));
 ---

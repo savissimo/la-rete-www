@@ -1,15 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import withBase from "../../utils/withBase";
 ---
 
 <Layout>
 	<h2>Vercellesi nel Mondo</h2>
 	<nav class="container-menu-vnm">
 		<ul>
-			<li class="menu-vnm"><a class="btn btn-ghost" href="/vercellesi-nel-mondo/documenti">Documenti</a></li>
-			<li class="menu-vnm"><a class="btn btn-ghost" href="/vercellesi-nel-mondo/passaporto">Passaporto</a></li>
-			<li class="menu-vnm"><a class="btn btn-ghost" href="/vercellesi-nel-mondo/interviste">Interviste</a></li>
-			<li class="menu-vnm"><a class="btn btn-ghost" href="/vercellesi-nel-mondo/raduno">Raduno</a></li>
+			<li class="menu-vnm"><a class="btn btn-ghost" href={withBase('/vercellesi-nel-mondo/documenti')}>Documenti</a></li>
+			<li class="menu-vnm"><a class="btn btn-ghost" href={withBase('/vercellesi-nel-mondo/passaporto')}>Passaporto</a></li>
+			<li class="menu-vnm"><a class="btn btn-ghost" href={withBase('/vercellesi-nel-mondo/interviste')}>Interviste</a></li>
+			<li class="menu-vnm"><a class="btn btn-ghost" href={withBase('/vercellesi-nel-mondo/raduno')}>Raduno</a></li>
 		</ul>
 	</nav>
 	<iframe src="https://www.google.com/maps/d/embed?mid=1T5K1jYvR2v3E3mcxyAqT3xmRVWA&hl=it" id="iframe-vnm"></iframe>
