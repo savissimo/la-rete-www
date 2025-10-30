@@ -1,0 +1,40 @@
+{
+    "documents": [
+        {
+            "id": 1,
+            "title": "Irigoyen, Mi Pueblo!",
+            "description": "Il libro del Centenario",
+            "files": [
+                {
+                    "label": "Il libro completo",
+                    "url": "/public/docs/VNM-001-Irigoyen-mi-pueblo-libro-del-centenario.pdf"
+                },
+                {
+                    "label": "Commento di Giovanni Barberis",
+                    "url": "/public/docs/VNM-002-Irigoyen-mi-pueblo-Giovanni-Barberis.pdf"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "1980: Visita di Gabriele Bagnasco a Irigoyen",
+            "description": "Foto fornite da Federico Marino",
+            "files": [
+                {
+                    "label": "Reportage fotografico",
+                    "url": "/public/docs/VNM-003-Visita-Bagnasco-Irigoyen-Argentina.pdf"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Oggettistica del Museo dell'Emigrante di Roasio per la mostra IN CERCA DI FUTURO",
+            "files": [
+                {
+                    "label": "Scheda degli oggetti",
+                    "url": "/public/docs/oggettistica_IN_CERCA_DI_FUTURO.pdf"
+                }
+            ]
+        }
+    ]
+}

@@ -5,13 +5,18 @@ import "../assets/fonts.css";
 import Icon from "../components/Icon.astro";
 
 const currentYear = new Date().getFullYear();
+
+interface Props {
+  breadcrumbs?: { label: string; href: string | null }[];
+}
+const { breadcrumbs } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width; initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>La Rete - Vercelli</title>
@@ -19,6 +24,14 @@ const currentYear = new Date().getFullYear();
 	<body>
 		<Navbar />
 		<main>
+			<nav class="breadcrumbs-container">
+				<ol class="breadcrumbs">
+					<li><a href="/">Home</a></li>
+					{breadcrumbs ? breadcrumbs.map(({ label, href }) => (
+						<li><a href={href}>{label}</a></li>
+					)) : null}
+				</ol>
+			</nav>
 			<slot />
 		</main>
 		<footer>
@@ -58,6 +71,40 @@ const currentYear = new Date().getFullYear();
 		width: 100%;
 		padding: 1rem;
 		margin: 0 auto;
+
+		.breadcrumbs-container {
+			font-size: 0.875rem;
+			color: var(--color-grey-darker);
+
+			ol.breadcrumbs {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+
+				li::after {
+					content: '»';
+					margin-left: 0.5rem;
+					color: var(--color-grey);
+				}
+
+				li:last-child::after {
+					content: '';
+					margin: 0;
+				}
+
+				a {
+					text-decoration: none;
+					color: var(--color-primary);
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
 	}
 
 	body > footer {
@@ -107,7 +154,7 @@ const currentYear = new Date().getFullYear();
 		& > .credits {
 			grid-area: credits;
 			font-family: var(--font-ss);
-			font-size: 0.7rem;
+			font-size: 0.5rem;
 		}
 		
 		& > .copyright {

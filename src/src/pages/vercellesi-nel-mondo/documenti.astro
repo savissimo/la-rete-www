@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import { fade } from "astro:transitions";
+
+const breadcrumbs = [
+    { label: 'Vercellesi nel Mondo', href: '/vercellesi-nel-mondo' },
+];
+const documents = (await getCollection('vercellesi-nel-mondo_documents'));
+
+// TODO Caricare file documenti
+---
+
+<Layout breadcrumbs={breadcrumbs}>
+    <h2>Documenti</h2>
+    <div class="documents-container">
+        {documents.map((d) => (
+            <section class="document card">
+                <header>
+                    <h3>{d.data.title}</h3>
+                </header>
+                {d.data.description ? <div class="description">{d.data.description}</div> : null}
+                {d.data.files 
+                    ? <div class="document-files-container">
+                        {(d.data.files ?? []).map((file) => (
+                            <div class="document-file">
+                                <a href={file.url} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                                    <Icon name="download" /> {file.label}
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                    : null}
+            </section>
+        ))}
+    </div>
+</Layout>
+
+<style>
+    .documents-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .document {
+        display: grid;
+        grid-template: "header" auto "description" auto "files" auto / auto;
+        gap: 1rem;
+
+        header {
+            grid-area: header;
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        .description {
+            grid-area: description;
+        }
+
+        .document-files-container {
+            grid-area: files;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+</style>

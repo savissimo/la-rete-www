@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Pattern leggero a rete organica">
+  <defs>
+    <!-- gradients for subtle node fills -->
+    <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#eaf6ff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#eaf6ff" stop-opacity="0.0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background (kept white / transparent) -->
+  <rect width="100%" height="100%" fill="transparent"/>
+
+  <!-- soft network lines (low-opacity, organic curves) -->
+  <g stroke="#9fbfd1" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.25">
+    <path d="M120 140 C200 100, 340 90, 420 150" />
+    <path d="M420 150 C480 190, 560 170, 620 210" />
+    <path d="M620 210 C680 250, 760 240, 840 280" />
+    <path d="M200 360 C260 320, 380 330, 480 380" />
+    <path d="M480 380 C540 410, 620 400, 700 440" />
+    <path d="M80 520 C160 480, 260 470, 340 520" />
+    <path d="M340 520 C420 560, 520 540, 600 580" />
+    <path d="M920 120 C880 180, 820 200, 760 240" />
+    <path d="M980 420 C900 380, 820 400, 740 460" />
+    <path d="M520 40 C600 60, 700 20, 820 60" />
+    <path d="M1020 640 C940 600, 860 620, 780 680" />
+    <path d="M300 700 C380 660, 460 680, 560 720" />
+    <path d="M640 560 C700 520, 820 540, 920 560" />
+  </g>
+
+  <!-- subtle cross-connections -->
+  <g stroke="#b9d2e3" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.15">
+    <path d="M420 150 C360 210, 320 280, 340 360" />
+    <path d="M620 210 C560 270, 520 340, 480 380" />
+    <path d="M760 240 C700 300, 660 360, 640 420" />
+    <path d="M340 520 C400 480, 520 460, 620 420" />
+    <path d="M820 60  C880 120, 920 200, 980 240" />
+  </g>
+
+  <!-- nodes: circles with very low opacity and soft halo -->
+  <g fill="url(#g1)" stroke="#9fbfd1" stroke-width="0.8" opacity="0.35">
+    <circle cx="120" cy="140" r="6"/>
+    <circle cx="420" cy="150" r="6.5"/>
+    <circle cx="620" cy="210" r="6"/>
+    <circle cx="840" cy="280" r="5.5"/>
+    <circle cx="200" cy="360" r="6"/>
+    <circle cx="480" cy="380" r="6.5"/>
+    <circle cx="700" cy="440" r="5.5"/>
+    <circle cx="80" cy="520" r="6"/>
+    <circle cx="340" cy="520" r="6.5"/>
+    <circle cx="600" cy="580" r="5.5"/>
+    <circle cx="920" cy="120" r="5.5"/>
+    <circle cx="980" cy="420" r="6"/>
+    <circle cx="1020" cy="640" r="5.5"/>
+    <circle cx="300" cy="700" r="6"/>
+    <circle cx="560" cy="720" r="5.5"/>
+  </g>
+
+  <!-- tiny accent dots to add texture -->
+  <g fill="#dff3ff" opacity="0.30">
+    <circle cx="240" cy="100" r="2.2"/>
+    <circle cx="520" cy="30" r="1.8"/>
+    <circle cx="740" cy="230" r="1.6"/>
+    <circle cx="860" cy="480" r="1.8"/>
+    <circle cx="430" cy="560" r="1.6"/>
+    <circle cx="950" cy="610" r="1.6"/>
+  </g>
+</svg>
