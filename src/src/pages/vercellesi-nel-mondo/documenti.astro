@@ -2,14 +2,11 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
-import { fade } from "astro:transitions";
 
 const breadcrumbs = [
     { label: 'Vercellesi nel Mondo', href: '/vercellesi-nel-mondo' },
 ];
 const documents = (await getCollection('vercellesi-nel-mondo_documents'));
-
-// TODO Caricare file documenti
 ---
 
 <Layout breadcrumbs={breadcrumbs}>

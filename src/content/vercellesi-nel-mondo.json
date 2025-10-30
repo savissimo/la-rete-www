@@ -7,11 +7,11 @@
             "files": [
                 {
                     "label": "Il libro completo",
-                    "url": "/public/docs/VNM-001-Irigoyen-mi-pueblo-libro-del-centenario.pdf"
+                    "url": "/docs/VNM-001-Irigoyen-mi-pueblo-libro-del-centenario.pdf"
                 },
                 {
                     "label": "Commento di Giovanni Barberis",
-                    "url": "/public/docs/VNM-002-Irigoyen-mi-pueblo-Giovanni-Barberis.pdf"
+                    "url": "/docs/VNM-002-Irigoyen-mi-pueblo-Giovanni-Barberis.pdf"
                 }
             ]
         },
@@ -22,7 +22,7 @@
             "files": [
                 {
                     "label": "Reportage fotografico",
-                    "url": "/public/docs/VNM-003-Visita-Bagnasco-Irigoyen-Argentina.pdf"
+                    "url": "/docs/VNM-003-Visita-Bagnasco-Irigoyen-Argentina.pdf"
                 }
             ]
         },
@@ -32,7 +32,7 @@
             "files": [
                 {
                     "label": "Scheda degli oggetti",
-                    "url": "/public/docs/oggettistica_IN_CERCA_DI_FUTURO.pdf"
+                    "url": "/docs/oggettistica_IN_CERCA_DI_FUTURO.pdf"
                 }
             ]
         }
