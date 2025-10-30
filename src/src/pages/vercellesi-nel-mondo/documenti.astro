@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
+import withBase from "../../utils/withBase";
 
 const breadcrumbs = [
     { label: 'Vercellesi nel Mondo', href: '/vercellesi-nel-mondo' },
@@ -22,7 +23,7 @@ const documents = (await getCollection('vercellesi-nel-mondo_documents'));
                     ? <div class="document-files-container">
                         {(d.data.files ?? []).map((file) => (
                             <div class="document-file">
-                                <a href={file.url} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                                <a href={withBase(file.url)} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
                                     <Icon name="download" /> {file.label}
                                 </a>
                             </div>

@@ -1,6 +1,7 @@
 ---
 import Icon from "../components/Icon.astro";
 import Layout from "../layouts/Layout.astro";
+import withBase from "../utils/withBase";
 ---
 
 <Layout>
@@ -71,8 +72,8 @@ import Layout from "../layouts/Layout.astro";
 
 	<h3>Documenti dell'associazione</h3>
 	<ul class="documents">
-		<li>Dati amministrativi <a href="/docs/dati-amministrativi-la-rete.pdf" target="_blank"><Icon name="download" /></a></li>
-		<li>Statuto <a href="/docs/statuto-la-rete.pdf" target="_blank"><Icon name="download" /></a></li>
+		<li>Dati amministrativi <a href={withBase('/docs/dati-amministrativi-la-rete.pdf')} target="_blank"><Icon name="download" /></a></li>
+		<li>Statuto <a href={withBase('/docs/statuto-la-rete.pdf')} target="_blank"><Icon name="download" /></a></li>
 	</ul>
 </Layout>
 
