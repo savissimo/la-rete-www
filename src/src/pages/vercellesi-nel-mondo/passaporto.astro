@@ -3,32 +3,52 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
 import withBase from "../../utils/withBase";
+import { Image } from "astro:assets";
 
 const breadcrumbs = [
     { label: 'Vercellesi nel Mondo', href: withBase('/vercellesi-nel-mondo') },
 ];
 const passaporto = (await getCollection('vercellesi-nel-mondo_passaporto'));
+
+const baseImagePath = '/src/assets/images/vercellesi-nel-mondo/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/vercellesi-nel-mondo/*.{jpeg,jpg,png,gif}');
+
+// Resolve glob loaders into actual metadata objects so we can use them synchronously in the template.
+const resolvedImages: Record<string, ImageMetadata> = {};
+for (const key of Object.keys(images)) {
+    try {
+        const mod = await images[key]();
+        resolvedImages[key] = mod?.default ?? mod;
+    } catch (err) {
+        // ignore individual import errors; the template will throw a clearer error if missing
+    }
+}
 ---
 
 <Layout breadcrumbs={breadcrumbs}>
     <h2>Passaporto</h2>
 	<p>In collaborazione con <a href="https://www.vercelliweb.tv">Vercelli Web.TV</a></p>
     <div class="episodes-container">
-        {passaporto.map((e) => (
-            <section class="episode card">
-                <header>
-                    <h3>{e.data.name}</h3>
-                </header>
-                <div class="picture">
-					<img src={`/src/assets/images/vercellesi-nel-mondo/${e.data.image}`} alt={e.data.name} />
-				</div>
-				<div class="link">
-					<a href={e.data.link} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
-						<Icon name="external-link" /> Guarda la puntata
-					</a>
-				</div>
-            </section>
-        ))}
+        {passaporto.map((e) => {
+			const imagePath = baseImagePath + e.data.image;
+            if (!resolvedImages[imagePath]) {
+                throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/images/vercellesi-nel-mondo/*.{jpeg,jpg,png,gif}"`);
+            }
+			return (
+				<section class="episode card">
+					<header>
+						<h3>{e.data.name}</h3>
+					</header>
+					<div class="picture">
+                        <Image src={resolvedImages[imagePath]} alt={e.data.name} />
+					</div>
+					<div class="link">
+						<a href={e.data.link} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+							<Icon name="external-link" /> Guarda la puntata
+						</a>
+					</div>
+				</section>
+			)})}
     </div>
 </Layout>
 
@@ -45,7 +65,7 @@ const passaporto = (await getCollection('vercellesi-nel-mondo_passaporto'));
 
     .episode {
         display: grid;
-        grid-template: "header" auto "description" auto "files" auto / auto;
+        grid-template: "header" auto "picture" auto "link" auto / auto;
         gap: 1rem;
 
         header {
@@ -56,15 +76,18 @@ const passaporto = (await getCollection('vercellesi-nel-mondo_passaporto'));
             }
         }
 
-        .description {
-            grid-area: description;
+        .picture {
+            grid-area: picture;
+			width: 100%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
         }
 
-        .document-files-container {
-            grid-area: files;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .link {
+            grid-area: link;
         }
     }
 </style>
