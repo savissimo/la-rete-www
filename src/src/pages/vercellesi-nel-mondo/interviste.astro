@@ -38,6 +38,7 @@ for (const key of Object.keys(images)) {
 				<section class="interview card">
 					<header>
 						<h3>{e.data.name} {e.data.surname}</h3>
+						<p>{e.data.city}, {e.data.country}</p>
 					</header>
 					<div class="picture">
                         <Image src={resolvedImages[imagePath]} alt={`${e.data.name} ${e.data.surname}`} />
