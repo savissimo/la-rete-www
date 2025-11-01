@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import withBase from "../../utils/withBase";
+import { Image } from "astro:assets";
+
+const breadcrumbs = [
+    { label: 'Vercellesi nel Mondo', href: withBase('/vercellesi-nel-mondo') },
+];
+const interviews = (await getCollection('vercellesi-nel-mondo_interviews'));
+
+const baseImagePath = '/src/assets/images/vercellesi-nel-mondo/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/vercellesi-nel-mondo/*.{jpeg,jpg,png,gif}');
+
+// Resolve glob loaders into actual metadata objects so we can use them synchronously in the template.
+const resolvedImages: Record<string, ImageMetadata> = {};
+for (const key of Object.keys(images)) {
+    try {
+        const mod = await images[key]();
+        resolvedImages[key] = mod?.default ?? mod;
+    } catch (err) {
+        // ignore individual import errors; the template will throw a clearer error if missing
+    }
+}
+---
+
+<Layout breadcrumbs={breadcrumbs}>
+    <h2>Interviste</h2>
+	<p>In collaborazione con <a href="https://www.lasesia.vercelli.it">Vercelli Web.TV</a></p>
+    <div class="interviews-container">
+        {interviews.map((e) => {
+			const imagePath = baseImagePath + e.data.image;
+            if (!resolvedImages[imagePath]) {
+                throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/images/vercellesi-nel-mondo/*.{jpeg,jpg,png,gif}"`);
+            }
+			return (
+				<section class="interview card">
+					<header>
+						<h3>{e.data.name} {e.data.surname}</h3>
+					</header>
+					<div class="picture">
+                        <Image src={resolvedImages[imagePath]} alt={`${e.data.name} ${e.data.surname}`} />
+					</div>
+					<div class="link">
+						{e.data.link.map((l) => (
+							<a href={l.url} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+								<Icon name="external-link" /> Leggi l'intervista {l.label ? `(${l.label})`: ''}
+							</a>
+						))}
+					</div>
+				</section>
+			)})}
+    </div>
+</Layout>
+
+<style>
+    .interviews-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .interview {
+        display: grid;
+        grid-template: "header" auto "picture" auto "link" auto / auto;
+        gap: 1rem;
+
+        header {
+            grid-area: header;
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        .picture {
+            grid-area: picture;
+			width: 100%;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+        }
+
+        .link {
+            grid-area: link;
+        }
+    }
+</style>
