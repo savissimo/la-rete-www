@@ -8,9 +8,10 @@ import withBase from '../utils/withBase';
 const currentYear = new Date().getFullYear();
 
 interface Props {
-  breadcrumbs?: { label: string; href: string | null }[];
+  breadcrumbs?: { label: string; href: string | null }[]
+  noBreadcrumbs?: boolean
 }
-const { breadcrumbs } = Astro.props;
+const { breadcrumbs, noBreadcrumbs = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,14 +26,14 @@ const { breadcrumbs } = Astro.props;
 	<body>
 		<Navbar />
 		<main>
-			<nav class="breadcrumbs-container">
+			{!noBreadcrumbs && <nav class="breadcrumbs-container">
 				<ol class="breadcrumbs">
 					<li><a href={withBase('/')}>Home</a></li>
 					{breadcrumbs ? breadcrumbs.map(({ label, href }) => (
 						<li><a href={href}>{label}</a></li>
 					)) : null}
 				</ol>
-			</nav>
+			</nav>}
 			<slot />
 		</main>
 		<footer>
