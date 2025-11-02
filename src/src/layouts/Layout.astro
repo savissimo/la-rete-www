@@ -3,6 +3,7 @@ import "./Layout.scss";
 import Navbar from "../components/Navbar.astro";
 import "../assets/fonts.css";
 import Icon from "../components/Icon.astro";
+import { withBase } from '../utils/withBase';
 
 const currentYear = new Date().getFullYear();
 
@@ -26,7 +27,7 @@ const { breadcrumbs } = Astro.props;
 		<main>
 			<nav class="breadcrumbs-container">
 				<ol class="breadcrumbs">
-					<li><a href="/">Home</a></li>
+					<li><a href={withBase('/')}>Home</a></li>
 					{breadcrumbs ? breadcrumbs.map(({ label, href }) => (
 						<li><a href={href}>{label}</a></li>
 					)) : null}
