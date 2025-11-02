@@ -21,7 +21,7 @@ const { breadcrumbs } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>La Rete - Vercelli</title>
-	</head>
+		<script type="text/javascript" src="https://embeds.iubenda.com/widgets/14a8fe40-e5fd-49f5-a561-89e62e227a78.js"></script>	</head>
 	<body>
 		<Navbar />
 		<main>
@@ -44,6 +44,10 @@ const { breadcrumbs } = Astro.props;
 				<a href="https://www.facebook.com/laretevercelli"><Icon name="facebook" /></a>
 				<a href="https://www.instagram.com/larete.vercelli"><Icon name="instagram" /></a>
 				<a href="mailto:grandevercelli@gmail.com"><Icon name="ui-email" /></a>
+			</div>
+			<div class="legals">
+				<a href="https://www.iubenda.com/privacy-policy/43817366" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+				<a href="https://www.iubenda.com/privacy-policy/43817366/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 			</div>
 			<div class="credits">
 				<Icon name="code" /> <a href="https://www.linkedin.com/in/simonesaviolo/">Simone Saviolo</a>
@@ -121,8 +125,8 @@ const { breadcrumbs } = Astro.props;
 		display: grid;
 		grid-template: 
 			"header contacts" auto
-			"credits credits" auto
-			"copyright copyright" auto
+			"legals legals" auto
+			"copyright credits" auto
 			/ 1fr auto;
 
 		& > header {
@@ -152,14 +156,22 @@ const { breadcrumbs } = Astro.props;
 			font-size: 1.5rem;
 		}
 
+		& > .legals {
+			grid-area: legals;
+			justify-self: start;
+			padding-bottom: .5rem;
+		}
+
 		& > .credits {
 			grid-area: credits;
+			justify-self: end;
 			font-family: var(--font-ss);
 			font-size: 0.5rem;
 		}
 		
 		& > .copyright {
 			grid-area: copyright;
+			justify-self: start;
 			font-family: var(--font-ss);
 			font-size: 0.7rem;
 		}
