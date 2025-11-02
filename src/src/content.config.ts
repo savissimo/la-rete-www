@@ -1,5 +1,14 @@
 import { defineCollection, z } from "astro:content";
-import { file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
+
+const dvd = defineCollection({
+	loader: glob({ base: './content/dvd', pattern: '**/*.md' }),
+	schema: z.object({
+		order: z.number(),
+		image: z.string(),
+		title: z.string(),
+	}),
+})
 
 const vercellesiNelMondoDocuments = defineCollection({
     loader: file('./content/vercellesi-nel-mondo.json', { parser: (t) => JSON.parse(t).documents }),
@@ -41,6 +50,7 @@ const vercellesiNelMondoInterviews = defineCollection({
 })
 
 export const collections = {
+	'dvd': dvd,
     'vercellesi-nel-mondo_documents': vercellesiNelMondoDocuments,
     'vercellesi-nel-mondo_passaporto': vercellesiNelMondoPassaporto,
 	'vercellesi-nel-mondo_interviews': vercellesiNelMondoInterviews,

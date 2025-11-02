@@ -1,0 +1,80 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { getEntry } from "astro:content";
+import withBase from "../../utils/withBase";
+import { Image } from "astro:assets";
+
+const breadcrumbs = [
+    { label: 'DVD de La Rete', href: withBase('/dvd') },
+];
+
+export const getStaticPaths = (async () => {
+	const allEntries = await getCollection('dvd');
+	return allEntries.map((entry) => ({
+		params: { id: entry.id },
+	})) || [];
+}) satisfies GetStaticPaths;
+
+const dvdId = Astro.params.id;
+const dvdEntry = await getEntry('dvd', dvdId);
+if (!dvdEntry) {
+	throw new Error(`DVD with id "${dvdId}" not found.`);
+}
+const { Content, headings } = await render(dvdEntry);
+
+const baseImagePath = '/src/assets/images/dvd/';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/dvd/*.{jpeg,jpg,png,gif}');
+const mod = await images[baseImagePath + dvdEntry.data.image]();
+const resolvedImage = mod?.default ?? mod;
+
+---
+<Layout breadcrumbs={breadcrumbs}>
+	<h2>{dvdEntry.data.title}</h2>
+
+	<section class="dvd-details">
+		<picture>
+			<Image src={resolvedImage} alt={dvdEntry.data.title} />
+		</picture>
+		<main>
+			<Content />
+		</main>
+	</section>
+	
+	<p class="ordering-info">
+		I DVD, realizzati da <strong>La Rete</strong> con il coordinamento di <strong>Maurizio Roccato</strong>,
+		possono essere richiesti scrivendo a <a href="mailto:grandevercelli@gmail.com">grandevercelli@gmail.com</a>.
+	</p>
+</Layout>
+
+<style>
+	.dvd-details {
+		display: grid;
+		grid-template: "picture" auto "content" auto / 100%;
+		gap: 2rem;
+		margin-bottom: 2rem;
+
+		@media (min-width: 600px) {
+			grid-template: "picture content" auto / 20rem 1fr;
+		}
+
+		picture {
+			grid-area: picture;
+
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 0.25rem;
+			}
+		}
+
+		main {
+			grid-area: content;
+		}
+	}
+
+	.ordering-info {
+		font-style: italic;
+	}
+</style>
