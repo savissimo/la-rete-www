@@ -58,6 +58,11 @@ import withBase from '../utils/withBase';
 		<p>Vuoi contribuire? Scopri le nostre proposte, partecipa agli incontri, unisciti alla Rete.</p>
 		<a href="#contact" class="btn btn-primary">Contattaci</a>
 	</section>
+
+	<section id="ricordo-marco-reis">
+		<p>In memoria di Marco Reis, fondatore de La Rete, scomparso nel 2019</p>
+		<a href={withBase('/in-ricordo-di-marco')} class="btn btn-invisible">Scopri di più</a>
+	</section>
 </Layout>
 
 <style>
@@ -96,6 +101,16 @@ import withBase from '../utils/withBase';
 			height: 14em;
 			background: linear-gradient(to top, hsla(13, 5%, 5%, .6) 0%, hsla(13, 4%, 7%, .4) 75%, hsla(13, 3%, 8%, 0) 100%);
 			z-index: 0;
+		}
+
+		&::after {
+			content: 'Foto Stefania Piccoli';
+			position: absolute;
+			bottom: .5rem;
+			right: .5rem;
+			color: var(--color-grey-light);
+			font-family: var(--font-ss);
+			font-size: 0.6rem;
 		}
 
 		.hero-title {
@@ -160,6 +175,21 @@ import withBase from '../utils/withBase';
 		border: 1px solid var(--color-primary);
 		border-width: 2px 0;
 		border-image: linear-gradient(to right, transparent 0%, var(--color-primary) 50%, transparent 100%);
+
+		p {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+			color: var(--color-grey-darker);
+		}
+	}
+
+	#ricordo-marco-reis {
+		text-align: center;
+		margin: 4rem 0;
+		padding: 2rem 0;
+		border: 1px solid var(--color-primary);
+		background-color: var(--color-grey-lighter);
+		border-width: 2px 0;
 
 		p {
 			font-size: 1.25rem;

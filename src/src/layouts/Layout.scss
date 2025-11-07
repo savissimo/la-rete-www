@@ -160,6 +160,17 @@ a {
 			color: var(--color-light);
 		}
 	}
+
+	&.btn-invisible {
+		background-color: transparent;
+		color: var(--color-primary);
+		padding: 0;
+		
+		&:hover {
+			text-decoration: underline;
+			background-color: transparent;
+		}
+	}
 }
 
 .card {
@@ -167,4 +178,45 @@ a {
 	padding: 2rem;
 	border: .0625rem solid var(--color-grey-lighter);
 	border-radius: .25rem;
+}
+
+figure {
+	margin: 1rem 0;
+
+	img {
+		width: 100%;
+		height: auto;
+		border-radius: .25rem;
+	}
+
+	figcaption {
+		font-family: var(--font-ss);
+		font-size: 0.875rem;
+		color: var(--color-grey-dark);
+		text-align: center;
+		margin: 0;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--color-grey-lighter);
+	}
+}
+
+signature {
+	display: grid;
+	grid-template: ". author" auto / 1fr auto;
+	font-family: var(--font-cursive);
+	font-size: 1em;
+	color: var(--color-grey-dark);
+
+	author {
+		grid-area: author;
+		font-weight: bold;
+		padding: 0 4rem 0 0;
+
+		title {
+			display: block;
+			font-style: italic;
+			font-weight: normal;
+			font-size: 0.875em;
+		}
+	}
 }

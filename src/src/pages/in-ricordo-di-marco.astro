@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import imgMarcoReis from '../assets/images/marco-reis.png';
+---
+
+<Layout>
+    <h2>In ricordo di Marco</h2>
+
+    <figure class="figure-marco">
+        <Image src={imgMarcoReis} alt="Marco Reis" />
+        <figcaption>Marco Reis (1952-2019), fondatore della Rete (foto Stefania Piccoli)</figcaption>
+    </figure>
+
+    <p>
+        Con te, Marco, se ne è andata una voce indomita, un custode appassionato della nostra memoria e un intellettuale
+        che non ha mai avuto paura di pensare "fuori dal coro".
+    </p>
+    <p>
+        Chi ti ha conosciuto ricorda il tuo carattere forte, a volte spigoloso, ma era proprio in quella schiettezza che
+        risiedeva la tua forza: la capacità di avere idee brillanti, di anticipare i tempi e di lottare con tenacia per ciò
+        in cui credevi. Non eri solo un giornalista, un politico o un animatore culturale; eri, prima di tutto, una
+        coscienza critica per Vercelli.
+    </p>
+    <p>
+        Hai combattuto battaglie instancabili per salvaguardare la nostra identità, per valorizzare ogni pietra e ogni
+        racconto che testimoniano la grandezza di Vercelli.
+    </p>
+    <p>
+        Ci hai insegnato a guardare il nostro passato non con nostalgia, ma con l'urgenza di proteggerlo per il
+        futuro.
+    </p>
+    <p>
+        In questo breve testo non vogliamo solo ricordare chi eri, ma raccogliere il testimone che ci hai lasciato.
+        La tua eredità è un invito a non restare indifferenti, a essere tutti cittadini attivi e custodi della nostra
+        cultura.
+        La tua tenacia e le tue idee continueranno a ispirarci.
+    </p>
+    <signature>
+        <author>
+            Giovanni Mercuri
+            <title>Segretario de La Rete</title>
+        </author>
+    </signature>
+</Layout>
