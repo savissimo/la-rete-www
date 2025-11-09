@@ -12,6 +12,7 @@ interface Props {
   noBreadcrumbs?: boolean
 }
 const { breadcrumbs, noBreadcrumbs = false } = Astro.props;
+const includeGoatCounter = import.meta.env.INCLUDE_GOATCOUNTER === 'true';
 ---
 
 <!doctype html>
@@ -57,7 +58,9 @@ const { breadcrumbs, noBreadcrumbs = false } = Astro.props;
 			<div class="copyright">© La Rete 2013&mdash;{currentYear}</div>
 		</footer>
 		<script type="text/javascript" src="https://embeds.iubenda.com/widgets/14a8fe40-e5fd-49f5-a561-89e62e227a78.js"></script>
-		<script data-goatcounter="https://stats.savissimo.it/count" async src="//stats.savissimo.it/count.js"></script>
+		{includeGoatCounter &&
+			<script data-goatcounter="https://laretevercelli.stats.savissimo.it/count" async src="//laretevercelli.stats.savissimo.it/count.js"></script>
+		}
 	</body>
 </html>
 
