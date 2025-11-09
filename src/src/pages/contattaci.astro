@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import withBase from "../utils/withBase";
+---
+
+<Layout>
+	<h2>CONTATTI</h2>
+	<h3>Sede</h3>
+	<p>La Rete, via Paggi 45, 13100 Vercelli</p>
+	<h3>Sito web</h3>
+	<p><a href={withBase('/')}>www.grandevercelli.it</a></p>
+	<h3>E-mail</h3>
+	<p><a href="mailto:info@grandevercelli.it" target="_blank">info@grandevercelli.it</a></p>
+	<p><a href="mailto:grandevercelli@gmail.com" target="_blank">grandevercelli@gmail.com</a></p>
+	<p>EMAIL di singoli Responsabili operativi: vedi nella pagina <a href={withBase('/l-associazione')}>LA RETE</a></p>
+
+	<h3>Pagina Facebook</h3>
+	<p><a href="https://www.facebook.com/laretevercelli/">LA RETE – VERCELLI</a></p>
+
+	<h3>IBAN</h3>
+	<p><strong>IT42 P060 9010 0090 0000 1001 398</strong></p>
+	<p>con Beneficiario: <strong>LA RETE – VERCELLI</strong></p>
+	<p>Nella Causale indicare SEMPRE il proprio nome e mail</p>
+</Layout>
